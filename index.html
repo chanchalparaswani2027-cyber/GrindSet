@@ -18,7 +18,7 @@
             font-family: 'Space Grotesk', sans-serif; 
             background-color: #0f172a; 
             color: #f1f5f9; 
-            padding-top: 100px; /* Space for fixed nav */
+            padding-top: 100px; 
         }
 
         .glass-card { 
@@ -116,45 +116,54 @@
                     </div>
                 </div>
                 
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-3">
-                    <select id="peer-select" class="bg-slate-900/80 border border-slate-700 rounded-xl px-4 py-3 text-sm focus:border-purple-500 outline-none text-white">
-                        <option value="">Choose Teammate</option>
-                        <option value="Chanchal">Chanchal Paraswani</option>
-                        <option value="Runit">Runit Ahluwalia</option>
-                        <option value="Korel">Korel Mukhopadhyay</option>
-                        <option value="Pragya">Pragya Singh</option>
-                        <option value="Rambir">Rambir Singh</option>
-                    </select>
+                <div class="flex flex-col gap-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <select id="dept-select" onchange="filterTeammates(this.value)" class="bg-slate-900/80 border border-slate-700 rounded-xl px-4 py-3 text-sm focus:border-purple-500 outline-none text-white">
+                            <option value="">Select Department</option>
+                            <option value="HR">HR</option>
+                            <option value="Marketing">Marketing</option>
+                            <option value="Ops">Ops</option>
+                            <option value="Finance">Finance</option>
+                            <option value="Data Analytics">Data Analytics</option>
+                        </select>
 
-                    <select id="project-award-select" class="bg-slate-900/80 border border-slate-700 rounded-xl px-4 py-3 text-sm focus:border-purple-500 outline-none text-white">
-                        <option value="">Select Project</option>
-                        <option value="Hiresmart">Hiresmart</option>
-                        <option value="Engage360">Engage360</option>
-                        <option value="PerfromX">PerfromX</option>
-                        <option value="Customer360">Customer360</option>
-                        <option value="Market Expansion Tier 2">Market Expansion Tier 2</option>
-                        <option value="CyberShield">CyberShield</option>
-                        <option value="TalentNXT">TalentNXT</option>
-                        <option value="ESG Impact">ESG Impact</option>
-                        <option value="Project Risk Guide">Project Risk Guide</option>
-                        <option value="Project Horizon 2028">Project Horizon 2028</option>
-                        <option value="PMS Prototype">PMS Prototype</option>
-                    </select>
+                        <select id="peer-select" class="bg-slate-900/80 border border-slate-700 rounded-xl px-4 py-3 text-sm focus:border-purple-500 outline-none text-white">
+                            <option value="">Choose Teammate</option>
+                            <!-- Filtered dynamic list -->
+                        </select>
+                    </div>
 
-                    <select id="badge-award-select" class="bg-slate-900/80 border border-slate-700 rounded-xl px-4 py-3 text-sm focus:border-purple-500 outline-none text-white">
-                        <option value="">Choose Badge</option>
-                        <option value="Emergency Rescuer">Emergency Rescuer (600 XP)</option>
-                        <option value="Calm Commander">Calm Commander (400 XP)</option>
-                        <option value="Team Leader">Team Leader (500 XP)</option>
-                        <option value="Reset Master">Reset Master (600 XP)</option>
-                        <option value="Critical Master">Critical Master (200 XP)</option>
-                        <option value="Fast Mover">Fast Mover (150 XP)</option>
-                        <option value="Marathon Achiever">Marathon Achiever (800 XP)</option>
-                    </select>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                        <select id="project-award-select" class="bg-slate-900/80 border border-slate-700 rounded-xl px-4 py-3 text-sm focus:border-purple-500 outline-none text-white">
+                            <option value="">Select Project</option>
+                            <option value="Hiresmart">Hiresmart</option>
+                            <option value="Engage360">Engage360</option>
+                            <option value="PerfromX">PerfromX</option>
+                            <option value="Customer360">Customer360</option>
+                            <option value="Market Expansion Tier 2">Market Expansion Tier 2</option>
+                            <option value="CyberShield">CyberShield</option>
+                            <option value="TalentNXT">TalentNXT</option>
+                            <option value="ESG Impact">ESG Impact</option>
+                            <option value="Project Risk Guide">Project Risk Guide</option>
+                            <option value="Project Horizon 2028">Project Horizon 2028</option>
+                            <option value="PMS Prototype">PMS Prototype</option>
+                        </select>
 
-                    <button onclick="awardPeer()" class="bg-purple-600 hover:bg-purple-500 text-white font-black rounded-xl py-3 transition-all shadow-lg shadow-purple-900/40 uppercase text-xs tracking-tighter">
-                        SEND AURA & BADGE
-                    </button>
+                        <select id="badge-award-select" class="bg-slate-900/80 border border-slate-700 rounded-xl px-4 py-3 text-sm focus:border-purple-500 outline-none text-white">
+                            <option value="">Choose Badge</option>
+                            <option value="Emergency Rescuer">Emergency Rescuer (300 XP)</option>
+                            <option value="Calm Commander">Calm Commander (200 XP)</option>
+                            <option value="Team Leader">Team Leader (250 XP)</option>
+                            <option value="Reset Master">Reset Master (300 XP)</option>
+                            <option value="Critical Master">Critical Master (100 XP)</option>
+                            <option value="Fast Mover">Fast Mover (75 XP)</option>
+                            <option value="Marathon Achiever">Marathon Achiever (400 XP)</option>
+                        </select>
+
+                        <button onclick="awardPeer()" class="bg-purple-600 hover:bg-purple-500 text-white font-black rounded-xl py-3 transition-all shadow-lg shadow-purple-900/40 uppercase text-xs tracking-tighter">
+                            SEND AURA & BADGE
+                        </button>
+                    </div>
                 </div>
             </section>
 
@@ -182,14 +191,14 @@
 
             <!-- Reference Badges -->
             <section class="glass-card p-6 rounded-3xl bg-slate-900/50">
-                <h2 class="text-[10px] font-black uppercase text-slate-500 tracking-widest mb-4 italic">Badge XP Values</h2>
+                <h2 class="text-[10px] font-black uppercase text-slate-500 tracking-widest mb-4 italic">Badge XP Values (Updated)</h2>
                 <div class="grid grid-cols-2 gap-3">
-                    <div class="bg-white/5 p-2 rounded-lg flex justify-between items-center"><span class="text-[10px] font-bold">Marathon Achiever</span><span class="text-green-400 font-bold text-xs">800</span></div>
-                    <div class="bg-white/5 p-2 rounded-lg flex justify-between items-center"><span class="text-[10px] font-bold">Reset Master</span><span class="text-orange-400 font-bold text-xs">600</span></div>
-                    <div class="bg-white/5 p-2 rounded-lg flex justify-between items-center"><span class="text-[10px] font-bold">Rescue Master</span><span class="text-red-400 font-bold text-xs">600</span></div>
-                    <div class="bg-white/5 p-2 rounded-lg flex justify-between items-center"><span class="text-[10px] font-bold">Team Leader</span><span class="text-indigo-400 font-bold text-xs">500</span></div>
-                    <div class="bg-white/5 p-2 rounded-lg flex justify-between items-center"><span class="text-[10px] font-bold">Calm Commander</span><span class="text-cyan-400 font-bold text-xs">400</span></div>
-                    <div class="bg-white/5 p-2 rounded-lg flex justify-between items-center"><span class="text-[10px] font-bold">Critical Master</span><span class="text-blue-400 font-bold text-xs">200</span></div>
+                    <div class="bg-white/5 p-2 rounded-lg flex justify-between items-center"><span class="text-[10px] font-bold">Marathon Achiever</span><span class="text-green-400 font-bold text-xs">400</span></div>
+                    <div class="bg-white/5 p-2 rounded-lg flex justify-between items-center"><span class="text-[10px] font-bold">Reset Master</span><span class="text-orange-400 font-bold text-xs">300</span></div>
+                    <div class="bg-white/5 p-2 rounded-lg flex justify-between items-center"><span class="text-[10px] font-bold">Rescue Master</span><span class="text-red-400 font-bold text-xs">300</span></div>
+                    <div class="bg-white/5 p-2 rounded-lg flex justify-between items-center"><span class="text-[10px] font-bold">Team Leader</span><span class="text-indigo-400 font-bold text-xs">250</span></div>
+                    <div class="bg-white/5 p-2 rounded-lg flex justify-between items-center"><span class="text-[10px] font-bold">Calm Commander</span><span class="text-cyan-400 font-bold text-xs">200</span></div>
+                    <div class="bg-white/5 p-2 rounded-lg flex justify-between items-center"><span class="text-[10px] font-bold">Critical Master</span><span class="text-blue-400 font-bold text-xs">100</span></div>
                 </div>
             </section>
         </div>
@@ -207,41 +216,78 @@
     </div>
 
     <script>
-        // State Management for 4 Profiles
+        // Employee Database by Department
+        const departments = {
+            "HR": [
+                "AKSHITA SHARMA", "ANANYA PANDEY", "ANKITA SINGH", "ANUSREE ANOOP", "C DHUWARKA", 
+                "CHANCHAL KANHAIYALAL PARASWANI", "GEETIMA KALITA", "KOMAL FARTYAL", "LAALIMALINA RANI SWAIN"
+            ],
+            "Marketing": [
+                "MADHAVI MENON", "MOHIT KUMAR SWAMI", "NEHA SINHA", "NIKITA ANKLESARIA", "OM", 
+                "PARAB RADHIKA RAVI", "PATIL VIVEK NIVRUTTI", "POLAKI JAHANAVI", "POOJA TEWATIYA"
+            ],
+            "Ops": [
+                "COL. RK AHLUWALIA", "DEEPAK KUMAR SARANGI", "PRABHAT SHEKHAR", "PRAGYA SINGH", 
+                "RACHIT SONDHI", "RAJANYA SINGH RATHORE", "RAMBIR SINGH", "RENU PARIHAR", "S RUKHSANA"
+            ],
+            "Finance": [
+                "SAHIL MUSTAFA BEG", "SARA SHANKAR", "SATAM YASH KAUSTUBH", "SHALINI PANDEY", 
+                "SHATAKSHI TIWARI", "SHREYA GHOSH", "SHRUTI CHAKRABORTY", "SIMRANJOT SINGH", "SOUMYA SAINI"
+            ],
+            "Data Analytics": [
+                "TANIYA KUMARI", "VAISHNAVEE SANDEEPKUMAR SHINDE", "VANDANA", "VIDYA LAL", 
+                "VINAYAK MANGOTRA", "YADAV VISHAKHA DEEPAK", "YASH MINLAL SHARMA", "YASHWANTH CHOUDARY", "KOREL MUKHOPADHYAY"
+            ]
+        };
+
         const users = {
-            chanchal: { name: "Chanchal P.", xp: 2450, on: 3, done: 12, badges: { "Critical Master": 3, "Fast Mover": 5, "Calm Commander": 1 }, avatar: "https://i.pravatar.cc/150?u=chanchal" },
-            runit: { name: "Runit A.", xp: 3120, on: 4, done: 15, badges: { "Team Leader": 8, "Marathon Achiever": 2 }, avatar: "https://i.pravatar.cc/150?u=runit" },
-            korel: { name: "Korel M.", xp: 1850, on: 2, done: 8, badges: { "Reset Master": 4 }, avatar: "https://i.pravatar.cc/150?u=korel" },
-            pragya: { name: "Pragya S.", xp: 2100, on: 5, done: 10, badges: { "Emergency Rescuer": 2, "Calm Commander": 2 }, avatar: "https://i.pravatar.cc/150?u=pragya" }
+            chanchal: { name: "CHANCHAL K.P.", xp: 1225, on: 3, done: 12, badges: { "Critical Master": 3, "Fast Mover": 5, "Calm Commander": 1 }, avatar: "https://i.pravatar.cc/150?u=chanchal" },
+            runit: { name: "RUNIT AHLUWALIA", xp: 1560, on: 4, done: 15, badges: { "Team Leader": 8, "Marathon Achiever": 2 }, avatar: "https://i.pravatar.cc/150?u=runit" },
+            korel: { name: "KOREL M.", xp: 925, on: 2, done: 8, badges: { "Reset Master": 4 }, avatar: "https://i.pravatar.cc/150?u=korel" },
+            pragya: { name: "PRAGYA SINGH", xp: 1050, on: 5, done: 10, badges: { "Emergency Rescuer": 2, "Calm Commander": 2 }, avatar: "https://i.pravatar.cc/150?u=pragya" }
         };
 
         const badgeXPMap = {
-            "Emergency Rescuer": 600,
-            "Calm Commander": 400,
-            "Team Leader": 500,
-            "Reset Master": 600,
-            "Critical Master": 200,
-            "Fast Mover": 150,
-            "Marathon Achiever": 800
+            "Emergency Rescuer": 300,
+            "Calm Commander": 200,
+            "Team Leader": 250,
+            "Reset Master": 300,
+            "Critical Master": 100,
+            "Fast Mover": 75,
+            "Marathon Achiever": 400
         };
 
         const rewards = [
-            { id: 1, name: "Amazon ₹1500", cost: 5000, icon: "fab fa-amazon", color: "text-rose-400" },
-            { id: 2, name: "Speaker Gift", cost: 8000, icon: "fas fa-volume-up", color: "text-blue-400" },
-            { id: 3, name: "Paid MH Leave", cost: 4000, icon: "fas fa-spa", color: "text-green-400" },
-            { id: 4, name: "Early Friday", cost: 1500, icon: "fas fa-clock", color: "text-amber-400" },
-            { id: 5, name: "WFH Pass", cost: 2500, icon: "fas fa-home", color: "text-cyan-400" },
-            { id: 6, name: "Meal Voucher", cost: 800, icon: "fas fa-utensils", color: "text-orange-400" },
-            { id: 7, name: "Learning Wallet", cost: 6000, icon: "fas fa-graduation-cap", color: "text-purple-400" },
-            { id: 8, name: "Free Beverage", cost: 300, icon: "fas fa-coffee", color: "text-indigo-400" }
+            { id: 1, name: "Amazon ₹1500", cost: 2500, icon: "fab fa-amazon", color: "text-rose-400" },
+            { id: 2, name: "Speaker Gift", cost: 4000, icon: "fas fa-volume-up", color: "text-blue-400" },
+            { id: 3, name: "Paid MH Leave", cost: 2000, icon: "fas fa-spa", color: "text-green-400" },
+            { id: 4, name: "Early Friday", cost: 750, icon: "fas fa-clock", color: "text-amber-400" },
+            { id: 5, name: "WFH Pass", cost: 1250, icon: "fas fa-home", color: "text-cyan-400" },
+            { id: 6, name: "Meal Voucher", cost: 400, icon: "fas fa-utensils", color: "text-orange-400" },
+            { id: 7, name: "Learning Wallet", cost: 3000, icon: "fas fa-graduation-cap", color: "text-purple-400" },
+            { id: 8, name: "Free Beverage", cost: 150, icon: "fas fa-coffee", color: "text-indigo-400" }
         ];
 
         let currentUserId = "chanchal";
 
+        function filterTeammates(dept) {
+            const peerSelect = document.getElementById('peer-select');
+            peerSelect.innerHTML = '<option value="">Choose Teammate</option>';
+            
+            if (dept && departments[dept]) {
+                departments[dept].forEach(name => {
+                    const opt = document.createElement('option');
+                    opt.value = name;
+                    opt.textContent = name;
+                    peerSelect.appendChild(opt);
+                });
+            }
+        }
+
         function switchProfile(id) {
             currentUserId = id;
             updateUI();
-            showToast("Profile Switched", `Now logged in as ${users[id].name}`, 'fa-user-astronaut');
+            showToast("Profile Switched", `Logged in as ${users[id].name}`, 'fa-user-astronaut');
         }
 
         function updateUI() {
@@ -250,24 +296,22 @@
             document.getElementById('current-avatar').src = user.avatar;
             document.getElementById('active-count').innerText = `${user.on} Ongoing Missions`;
             
-            // Build Projects (Simulated for active profile)
             const projContainer = document.getElementById('project-container');
             projContainer.innerHTML = `
                 <div class="p-4 rounded-2xl border border-slate-700 bg-slate-800/50 group hover:border-purple-500/50 transition-all">
                     <p class="text-[10px] font-bold text-slate-500 uppercase mb-2">Hiresmart AI</p>
                     <div class="flex justify-between mb-1"><span class="text-xs font-bold">Screening Pipeline</span><span class="text-xs text-purple-400">85%</span></div>
                     <div class="w-full bg-slate-700 rounded-full h-1.5 mb-4"><div class="bg-purple-500 h-1.5 rounded-full" style="width: 85%"></div></div>
-                    <button onclick="addXP(300)" class="w-full py-2 bg-purple-600/20 text-purple-400 rounded-xl text-[10px] font-bold hover:bg-purple-600 hover:text-white transition-all">GRIND PROGRESS (+300)</button>
+                    <button onclick="addXP(150)" class="w-full py-2 bg-purple-600/20 text-purple-400 rounded-xl text-[10px] font-bold hover:bg-purple-600 hover:text-white transition-all">GRIND PROGRESS (+150)</button>
                 </div>
                 <div class="p-4 rounded-2xl border border-slate-700 bg-slate-800/50 group hover:border-blue-500/50 transition-all">
                     <p class="text-[10px] font-bold text-slate-500 uppercase mb-2">CyberShield v2</p>
                     <div class="flex justify-between mb-1"><span class="text-xs font-bold">Threat Neutralization</span><span class="text-xs text-blue-400">42%</span></div>
                     <div class="w-full bg-slate-700 rounded-full h-1.5 mb-4"><div class="bg-blue-500 h-1.5 rounded-full" style="width: 42%"></div></div>
-                    <button onclick="addXP(150)" class="w-full py-2 bg-blue-600/20 text-blue-400 rounded-xl text-[10px] font-bold hover:bg-blue-600 hover:text-white transition-all">GRIND PROGRESS (+150)</button>
+                    <button onclick="addXP(75)" class="w-full py-2 bg-blue-600/20 text-blue-400 rounded-xl text-[10px] font-bold hover:bg-blue-600 hover:text-white transition-all">GRIND PROGRESS (+75)</button>
                 </div>
             `;
 
-            // Build Leaderboard
             const lbList = document.getElementById('leaderboard-list');
             lbList.innerHTML = Object.keys(users)
                 .sort((a, b) => users[b].xp - users[a].xp)
@@ -281,7 +325,7 @@
                                 <span class="text-xs font-black text-slate-600">#${index+1}</span>
                                 <img src="${u.avatar}" class="w-10 h-10 rounded-xl ${isMe ? 'ring-2 ring-purple-500' : ''}">
                                 <div>
-                                    <p class="text-sm font-bold">${u.name}${isMe ? ' <span class="text-[10px] text-purple-400 italic">(You)</span>' : ''}</p>
+                                    <p class="text-sm font-bold uppercase">${u.name}${isMe ? ' <span class="text-[10px] text-purple-400 italic font-normal">(You)</span>' : ''}</p>
                                     <p class="text-[9px] text-slate-500 uppercase font-black">${u.on} Active • ${u.done} Done</p>
                                 </div>
                             </div>
@@ -304,7 +348,6 @@
                     `;
                 }).join('');
 
-            // Build Rewards
             const rewardCont = document.getElementById('reward-container');
             rewardCont.innerHTML = rewards.map(r => `
                 <div class="glass-card p-4 rounded-2xl border-slate-800 hover:scale-105 transition-all cursor-pointer group" onclick="redeem(${r.cost}, '${r.name}')">
@@ -340,23 +383,25 @@
             const badge = document.getElementById('badge-award-select').value;
 
             if (!targetName || !project || !badge) {
-                showToast("Action Required", "Select a teammate, a project, and the badge to award.", "fa-exclamation-triangle");
+                showToast("Action Required", "Select teammate, project, and badge.", "fa-exclamation-triangle");
                 return;
             }
 
-            const badgeXP = badgeXPMap[badge] || 100;
+            const badgeXP = badgeXPMap[badge] || 50;
 
-            // Find user object by name (vague matching)
-            const targetId = Object.keys(users).find(k => users[k].name.includes(targetName));
+            const targetId = Object.keys(users).find(k => users[k].name.includes(targetName.substring(0, 10)));
+            
             if (targetId) {
                 users[targetId].xp += badgeXP;
                 users[targetId].badges[badge] = (users[targetId].badges[badge] || 0) + 1;
-                showToast("Aura Sent!", `Sent '${badge}' (+${badgeXP} XP) to ${targetName} for ${project}.`, 'fa-paper-plane');
-                updateUI();
+                showToast("Aura Sent!", `Sent '${badge}' to ${targetName}.`, 'fa-paper-plane');
+            } else {
+                showToast("Recognition Logged", `Awarded ${targetName} for ${project}.`, 'fa-check');
             }
-
-            // Reset selects
-            document.getElementById('peer-select').selectedIndex = 0;
+            updateUI();
+            
+            document.getElementById('dept-select').selectedIndex = 0;
+            document.getElementById('peer-select').innerHTML = '<option value="">Choose Teammate</option>';
             document.getElementById('project-award-select').selectedIndex = 0;
             document.getElementById('badge-award-select').selectedIndex = 0;
         }
@@ -364,10 +409,10 @@
         function redeem(cost, item) {
             if (users[currentUserId].xp >= cost) {
                 users[currentUserId].xp -= cost;
-                showToast("Loot Claimed!", `${item} is now yours. Aura spent: ${cost}`, 'fa-check-circle');
+                showToast("Loot Claimed!", `${item} purchased.`, 'fa-check-circle');
                 updateUI();
             } else {
-                showToast("Insufficient Aura", `You need ${cost - users[currentUserId].xp} more XP for ${item}.`, 'fa-lock');
+                showToast("Insufficient Aura", `Need ${cost - users[currentUserId].xp} more XP.`, 'fa-lock');
             }
         }
 
@@ -380,7 +425,6 @@
             setTimeout(() => t.classList.add('translate-y-24', 'opacity-0'), 4000);
         }
 
-        // Initialize UI
         updateUI();
     </script>
 </body>
